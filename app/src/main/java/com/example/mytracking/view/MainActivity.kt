@@ -1,4 +1,4 @@
-package com.example.mytracking
+package com.example.mytracking.view
 
 import android.Manifest
 import android.content.BroadcastReceiver
@@ -14,6 +14,7 @@ import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.example.mytracking.viewmodel.MainViewModel
 import com.example.mytracking.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

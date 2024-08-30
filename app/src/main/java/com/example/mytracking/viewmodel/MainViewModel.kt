@@ -1,4 +1,4 @@
-package com.example.mytracking
+package com.example.mytracking.viewmodel
 
 import android.app.Application
 import android.content.Context
@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.mytracking.model.MainRepository
 import com.example.mytracking.retrofit.LocationRequest
 import com.example.mytracking.retrofit.RetrofitController
 import retrofit2.Call

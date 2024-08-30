@@ -1,4 +1,4 @@
-package com.example.mytracking
+package com.example.mytracking.model
 
 import android.content.Context
 import android.content.pm.PackageManager
@@ -6,7 +6,6 @@ import android.location.Location
 import android.location.LocationManager
 import android.content.SharedPreferences
 import androidx.core.content.ContextCompat
-import androidx.core.content.edit
 
 class MainRepository(private val context: Context) {
 
