@@ -36,6 +36,16 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val sharedPreferences = getApplication<Application>().getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
     private val editor = sharedPreferences.edit()
 
+    init {
+        // Initialize screen-on time from SharedPreferences
+        val storedTimeInSeconds = repository.getStoredScreenOnTime()
+        _screenOnTime.value = formatTime(storedTimeInSeconds)
+
+        // Optionally, you could retrieve and set the last known location if required
+        // val lastKnownLocation = repository.getLastStoredLocation()
+        // _location.value = lastKnownLocation
+    }
+
     // Update screen-on time and store it in SharedPreferences
     fun updateScreenOnTime() {
         val timeInSeconds = repository.updateScreenOnTime()
