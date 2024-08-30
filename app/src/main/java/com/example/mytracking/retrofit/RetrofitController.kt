@@ -12,7 +12,6 @@ class RetrofitController private constructor() {
         .build()
 
     companion object {
-        // Replace with your actual base URL
         private const val BASE_URL = "http://123.253.10.229:8080/"
 
         @Volatile
