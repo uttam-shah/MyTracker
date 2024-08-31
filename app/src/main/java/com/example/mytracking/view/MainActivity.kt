@@ -14,6 +14,7 @@ import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.example.mytracking.ScreenOnTimeService
 import com.example.mytracking.viewmodel.MainViewModel
 import com.example.mytracking.databinding.ActivityMainBinding
 
@@ -27,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Start the foreground service to track screen-on time
+        startScreenOnTimeService()
 
         // Observe ViewModel data
         viewModel.screenOnTime.observe(this, Observer { time ->
@@ -69,19 +73,31 @@ class MainActivity : AppCompatActivity() {
             requestLocationPermission()
         }
 
-        binding.setting.setOnClickListener(View.OnClickListener {
+        binding.setting.setOnClickListener {
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
-        })
+        }
     }
+
+    private fun startScreenOnTimeService() {
+        val serviceIntent = Intent(this, ScreenOnTimeService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(serviceIntent)
+        } else {
+            startService(serviceIntent)
+        }
+    }
+
 
     private val screenOnOffReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             when (intent?.action) {
                 Intent.ACTION_SCREEN_ON -> {
+                    // Notify ViewModel of screen-on event
                     viewModel.resetLastScreenOnTime()
                 }
                 Intent.ACTION_SCREEN_OFF -> {
+                    // Notify ViewModel of screen-off event
                     viewModel.updateScreenOnTime()
                 }
             }
@@ -104,7 +120,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show()
             }
         }
-
 
     override fun onDestroy() {
         super.onDestroy()
