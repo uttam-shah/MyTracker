@@ -23,7 +23,7 @@
 
 
         <service
-            android:name=".ScreenOnTimeService"
+            android:name=".service.ScreenOnTimeService"
             android:foregroundServiceType="location|connectedDevice"
             android:exported="false"
             tools:ignore="ForegroundServicePermission" />

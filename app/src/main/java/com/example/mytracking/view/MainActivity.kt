@@ -7,14 +7,13 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.example.mytracking.ScreenOnTimeService
+import com.example.mytracking.service.ScreenOnTimeService
 import com.example.mytracking.viewmodel.MainViewModel
 import com.example.mytracking.databinding.ActivityMainBinding
 

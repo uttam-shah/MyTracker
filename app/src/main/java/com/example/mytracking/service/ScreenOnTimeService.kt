@@ -1,4 +1,4 @@
-package com.example.mytracking
+package com.example.mytracking.service
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -11,6 +11,7 @@ import android.content.IntentFilter
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
+import com.example.mytracking.R
 import com.example.mytracking.viewmodel.MainViewModel
 
 class ScreenOnTimeService : Service() {
